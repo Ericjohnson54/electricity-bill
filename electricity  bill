@@ -1,0 +1,27 @@
+shell
+#!/bin/bash
+
+# Prompt the user to enter CustomerID, CustomerName, and UnitConsumed
+read -p "Enter CustomerID: " customerID
+read -p "Enter CustomerName: " customerName
+read -p "Enter UnitConsumed: " unitConsumed
+
+# Calculate the electricity bill based on the units consumed
+if [ $unitConsumed -lt 200 ]; then
+    chargesPerUnit=120
+elif [ $unitConsumed -ge 200 ] && [ $unitConsumed -lt 400 ]; then
+    chargesPerUnit=150
+elif [ $unitConsumed -ge 400 ] && [ $unitConsumed -lt 600 ]; then
+    chargesPerUnit=180
+else
+    chargesPerUnit=200
+fi
+
+totalBill=$((unitConsumed * chargesPerUnit))
+
+# Display the electricity bill
+echo "CustomerID: $customerID"
+echo "CustomerName: $customerName"
+echo "UnitConsumed: $unitConsumed"
+echo "Charges per unit: $chargesPerUnit Ksh"
+echo "Total Bill: $totalBill Ksh"
